@@ -1,0 +1,18 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,87,47)
+  Border = False
+  { PictureBox1 PictureBox
+    MoveScaled(0,0,119,50)
+    Picture = Picture["splash.jpeg"]
+    Mode = PictureBox.Contain
+  }
+  { loading ProgressBar
+    MoveScaled(14,42,60,1)
+    Pulse = True
+  }
+  { tmr #Timer
+    #MoveScaled(3,5)
+  }
+}

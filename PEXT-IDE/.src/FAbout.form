@@ -1,0 +1,33 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,66,40)
+  Text = ("About - PEXT Integrated Dev. Env")
+  { IconView1 IconView
+    MoveScaled(17,0,49,40)
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(2,7,11,11)
+    Picture = Picture["pear-ide-v2.png"]
+    Mode = PictureBox.Contain
+  }
+  { Label1 Label
+    MoveScaled(2,19,11,4)
+    Font = Font["Bold,+1"]
+    Text = ("PEXT")
+    Alignment = Align.Center
+  }
+  { Label2 Label
+    MoveScaled(0,35,15,5)
+    Font = Font["-3"]
+    Text = ("Integrated Development\nEnvironment")
+  }
+  { Button1 Button
+    MoveScaled(50,35,14,3)
+    Text = ("Exit")
+  }
+  { TextArea1 TextArea
+    MoveScaled(17,2,47,30)
+    Text = ("Made under the\nAttribution-NonCommercial-NoDerivates \n4.0 International (CC BY-NC-ND 4.0)\n\nAuthors:\nAlexandru Balan (developer)\nJaythedeveloper (icon)")
+  }
+}

@@ -1,0 +1,203 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,161,80)
+  Text = ("PEXT Integrated Development Env.")
+  { Menu Menu
+    Text = ("File")
+    { SaveF Menu
+      Text = ("Save")
+      Shortcut = "Ctrl+S"
+    }
+    { SaveNF Menu
+      Text = ("Save As") & "..."
+      Shortcut = "Ctrl+Shift+S"
+    }
+    { OpenF Menu
+      Text = ("Open")
+      Shortcut = "Ctrl+O"
+    }
+    { NewF Menu
+      Text = ("New")
+      Shortcut = "Ctrl+N"
+    }
+    { QuitF Menu
+      Text = ("Quit")
+      Shortcut = "Ctrl+Q"
+    }
+  }
+  { EDIT Menu
+    Text = ("Edit")
+    { FontF Menu
+      Text = ("Font")
+      Shortcut = "Ctrl+Shift+F"
+    }
+    { TextF Menu
+      Text = ("Text")
+      { COPYF Menu
+        Text = ("Copy")
+        Shortcut = "Ctrl+Shift+C"
+      }
+      { EscapeF Menu
+        Text = ("Escape Remove")
+        Shortcut = "Ctrl+Shift+Esc"
+      }
+      { DiacriticsF Menu
+        Text = ("Diacritics Remove")
+        Shortcut = "Ctrl+Shift+Backspace"
+      }
+    }
+  }
+  { VIEW Menu
+    Text = ("View")
+    { ShowPreviewF Menu
+      Text = ("Show Preview")
+      Checked = True
+      Shortcut = "Shift+Alt+S"
+    }
+  }
+  { EDITOR Menu
+    Text = ("Editor")
+    { MODEF Menu
+      Text = ("Mode")
+      { MODEF1 Menu
+        Text = ("Default(PEXT)")
+        Checked = True
+        Shortcut = "Shift+Alt+P"
+      }
+      { MODEF2 Menu
+        Text = ("Text")
+        Shortcut = "Shift+Alt+T"
+      }
+    }
+  }
+  { DEBUG Menu
+    Text = ("Debug")
+    { UWU Menu
+      Text = ("uwu")
+      Shortcut = "Alt+U"
+    }
+  }
+  { WINDOW Menu
+    Text = ("Window")
+    { NewWindowsF Menu
+      Text = ("New Window")
+      Shortcut = "Ctrl+Shift+N"
+    }
+    { FSCREEN Menu
+      Text = ("Full Screen")
+      Shortcut = "F11"
+    }
+    { p_hide Menu
+      Text = ("Hide Panel")
+      Shortcut = "Alt+P"
+    }
+    { p_show Menu
+      Text = ("Show Panel")
+      Shortcut = "Ctrl+Shift+P"
+    }
+  }
+  { HELP Menu
+    Text = ("Help")
+    { ABOUT Menu
+      Text = ("About")
+      Shortcut = "Alt+A"
+    }
+    { CHGLOG Menu
+      Text = ("Changelog")
+      Shortcut = "Alt+C"
+    }
+    { DONATE Menu
+      Text = ("Donate")
+      Shortcut = "Alt+D"
+    }
+  }
+  { TextEditor1 TextEditor
+    MoveScaled(41,0,120,73)
+    Foreground = Color.Background
+    ShowPreview = True
+    TabIndent = True
+    ShowPosition = True
+    ShowLimit = True
+    ShowCurrent = True
+    ShowLineNumber = True
+    ShowModified = True
+    ShowBraces = True
+    ShowSpaces = True
+    ShowIndent = True
+  }
+  { chooser FileChooser
+    MoveScaled(0,0,41,77)
+    ShowDetailed = True
+    ShowBookmark = False
+    ShowFile = False
+    ShowButton = True
+    ShowToolbar = False
+  }
+  { blue_bar Panel
+    MoveScaled(0,73,161,3)
+    Background = &H378BE0&
+    Arrangement = Arrange.Horizontal
+    { Spring1 Spring
+      MoveScaled(6,0,4,4)
+    }
+    { pic_ready PictureBox
+      MoveScaled(12,0,3,3)
+      Picture = Picture["run.png"]
+      Mode = PictureBox.Contain
+    }
+    { Label1 Label
+      MoveScaled(16,0,24,3)
+      Foreground = Color.ButtonBackground
+      Text = ("Ready")
+    }
+    { Spring4 Spring
+      MoveScaled(35,-1,4,4)
+    }
+    { line_text Label
+      MoveScaled(61,0,11,4)
+      Foreground = &HFFFFFF&
+      Text = ("Ln")
+    }
+    { Spring3 Spring
+      MoveScaled(79,-1,4,4)
+    }
+    { column_text Label
+      MoveScaled(94,0,8,4)
+      Foreground = &HFFFFFF&
+      Text = ("Col")
+    }
+    { Spring6 Spring
+      MoveScaled(100,-1,4,4)
+    }
+    { char_text Label
+      MoveScaled(111,-1,8,4)
+      Foreground = &HFFFFFF&
+      Text = ("Ch")
+    }
+    { Spring7 Spring
+      MoveScaled(118,0,4,4)
+    }
+    { pic_status PictureBox
+      MoveScaled(127,0,3,3)
+      Visible = False
+      Picture = Picture["warn.png"]
+      Mode = PictureBox.Contain
+    }
+    { lbl_saved Label
+      MoveScaled(131,1,8,2)
+      Visible = False
+      Foreground = &HFFFFFF&
+      Text = ("Unsaved!")
+    }
+    { Spring2 Spring
+      MoveScaled(153,0,4,4)
+    }
+    { Spring5 Spring
+      MoveScaled(168,-1,4,4)
+    }
+    { Separator1 Separator
+      MoveScaled(178,0,1,4)
+    }
+  }
+}

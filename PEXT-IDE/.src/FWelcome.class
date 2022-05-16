@@ -1,0 +1,29 @@
+' Gambas class file
+
+Public Sub lbl_create_MouseDown()
+  FMain.Show
+  FWelcome.Close
+End
+Public Sub lbl_edit_MouseDown()
+  TestForm.Show
+  FWelcome.Close
+End
+Public Sub btn_clone_MouseDown()
+  FClone.Show
+End
+Public Sub desc_create_MouseDown()
+  FMain.Show
+  FWelcome.Close
+End
+Public Sub desc_edit_MouseDown()
+  TestForm.Show
+  FWelcome.Close
+End
+Public Sub PictureBox2_MouseDown()
+  FMain.Show
+  FWelcome.Close
+End
+Public Sub PictureBox3_MouseDown()
+  TestForm.Show
+  FWelcome.Close
+End

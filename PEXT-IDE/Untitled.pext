@@ -1,0 +1,60 @@
+#!/bin/bash
+
+########Text editing##########
+BLINK='\e[5m'                                    # Makes text blink ({$NC} has to be added to the end of the text)
+BOLD='\e[1m'                                     # Makes text bold
+DIM='\e[2mDim'                                   # Makes text Dim
+INV='\e[7m'                                      #inverts background and foreground
+UND='\e[4m'                                      # underlines text
+############Colors Foreground##############
+BLACK='\e[30m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BROWN='\033[0;33m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+MAGENTA='\e[35m'
+LIGHT_GRAY='\e[37m'
+DARK_GRAY='\e[90m'
+LIGHT_RED='\e[91m'
+LIGHT_GREEN='\e[92m'
+LIGHT_YELLOW='\e[93m'
+LIGHT_BLUE='\e[94m'
+LIGHT_MAGENTA='\e[95m'
+LIGHT_CYAN='\e[96m'
+
+###########Colors Backgroun###############
+RED_BG='\e[41m'
+GREEN_BG='\e[42m'
+YELLOW_BG='\e[43m'
+BLUE_BG='\e[44m'
+MAGENTA_BG='\e[45m'
+CYAN_BG='\e[46m'
+
+##########################################
+NC='\033[0m'                                     # No Color (add this to the end of every echo you added color too)
+
+clear
+echo -e "			${BROWN}#####################################${NC}"
+echo -e "			${BROWN}#      pearOS Extension Update      #${NC}"
+echo -e "			${BROWN}#-----------------------------------#${NC}"
+echo -e "			${BROWN}#  Author   :                       #${NC}"
+echo -e "			${BROWN}#  Email    :                       #${NC}"
+echo -e "			${BROWN}#  GitHub   : (optional)            #${NC}"
+echo -e "			${BROWN}#####################################${NC}"
+
+echo -e "${YELLOW_BG} ${BLACK} ${UNDERLINED}Update Started. Your pearintosh will be rebooted after the installation Is Complete!${NC}"
+############################Type your code below this line############################
+
+###########################Type your code above this line#############################
+#Attempting reboot
+mkdir ~/installed_pexts
+mv ~/Downloads/pext_name.pext ~/installed_pexts
+echo -e "${BLUE}Attempting reboot...${NC}"
+read -p "Do you want to reboot now? [y/n] " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    shutdown -r now
+fi

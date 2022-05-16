@@ -1,0 +1,39 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,76,44)
+  Text = ("Clone a repo. - PEXT Integrated Dev. Env.")
+  { IconView1 IconView
+    MoveScaled(25,0,52,45)
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(4,5,16,16)
+    Picture = Picture["GitHub-logo.png"]
+    Mode = PictureBox.Contain
+  }
+  { Label1 Label
+    MoveScaled(1,24,24,4)
+    Font = Font["+4"]
+    Text = ("Clone a project")
+  }
+  { Label2 Label
+    MoveScaled(28,6,37,4)
+    Font = Font["+2"]
+    Text = ("Paste the github URL to clone:")
+  }
+  { TextBox1 TextBox
+    MoveScaled(28,13,44,4)
+  }
+  { Button1 Button
+    MoveScaled(57,20,14,3)
+    Text = ("Clone")
+  }
+  { Button2 Button
+    MoveScaled(57,38,15,4)
+    Text = ("Exit")
+  }
+  { Spinner1 Spinner
+    MoveScaled(52,20,3,3)
+    Visible = False
+  }
+}

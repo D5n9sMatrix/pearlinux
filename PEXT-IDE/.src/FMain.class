@@ -1,0 +1,317 @@
+' Gambas class file
+
+Public Local As String
+Public ARGUMENTE As String = Args[1]
+Const Custom As Integer = 24 ' &H18
+Public Sub Form_Open()
+MODEF1.Checked = True
+'Enabling the showpreview option.
+If ARGUMENTE == "" Then
+  'If to check if there is an argument.
+  Else
+  If Exist(ARGUMENTE) Then 
+    'Checking if the typed file exists.
+    Local = ARGUMENTE
+    'Redirecting the argument to the variable Local.
+    TextEditor1.Text = File.Load(ARGUMENTE)
+    'Reading the argument file and writing it in the editor.
+    FMain.Title = ARGUMENTE & " - PEXT Integrated Development Env."
+    'Defining the title with the location of the argument.
+    Else
+    Message("The file does not exists", "OK")
+    'Message if the file does not exist.
+  Endif
+Endif
+  TextEditor1.Text = File.Load("Untitled.pext") 'Opening the sample PEXT located in data folder of the project
+  chooser.Filter = ["*.pext", "Pear Extension Files"]
+  column_text.Text = "Col " & TextEditor1.Column
+  line_text.Text = "Ln " & TextEditor1.Line
+  char_text.Text = "Ch" & TextEditor1.Column
+    Dim hFont As Font = Font["Monospace, 10"]
+  TextEditor1.Highlight = "sh"
+  TextEditor1.Styles[Highlight.Background].Color = Color.RGB(32, 32, 32, 0) 'background
+  TextEditor1.Styles[Highlight.Normal].Color = Color.RGB(255, 255, 255) 'normal colo
+  TextEditor1.Styles[Highlight.Keyword].Color = Color.RGB(125, 56, 181) 'if then else color
+  TextEditor1.Styles[Highlight.Constant].Color = Color.RGB(288, 162, 191) 'if else color
+  TextEditor1.Styles[Highlight.DataType].Color = Color.RGB(88, 162, 191)
+  TextEditor1.Styles[Highlight.Operator].Color = Color.RGB(200, 200, 200)
+  TextEditor1.Styles[Highlight.Symbol].Color = Color.RGB(255, 255, 255)
+  TextEditor1.Styles[Highlight.Label].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Number].Color = Color.RGB(218, 237, 209)
+  TextEditor1.Styles[Highlight.String].Color = Color.RGB(195, 137, 113)
+  TextEditor1.Styles[Highlight.Comment].Color = Color.RGB(23, 96, 23, 0)
+  TextEditor1.Styles[Highlight.Help].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Preprocessor].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Breakpoint].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.CurrentLine].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Selection].Color = Color.RGB(200, 200, 200)
+  TextEditor1.Styles[Highlight.Highlight].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Error].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Alternate].Color = Color.RGB(255, 255, 255)
+  TextEditor1.Font = hFont
+  TextEditor1.CloseBraces = True
+  TextEditor1.CloseStrings = True
+End
+Public Sub Form_Resize()
+If chooser.Visible == True Then
+  TextEditor1.W = Me.W - 301
+  TextEditor1.H = Me.H - 69 - 21 + 30
+  blue_bar.Y = Me.H - 44
+  chooser.H = Me.H - 21
+  blue_bar.w = Me.W - 20
+  TextEditor1.X = 280
+  Else If chooser.Visible == False Then
+    TextEditor1.X = 0
+    TextEditor1.W = Me.W - 20
+    TextEditor1.H = Me.H - 69 - 21 + 30
+    blue_bar.Y = Me.H - 44
+    chooser.H = Me.H - 25 - 21
+    blue_bar.w = Me.W - 20
+  Endif
+End
+Public Sub SaveF_Click()
+  Dialog.Filter = ["*.pext", "Pear Extension"]
+  'Dim pathh As String = Dialog.Path & ".pext"
+  If Local == "" Then 'Checking if the file location exists.
+  If Dialog.SaveFile() Then Return 'If there is no new file.
+  File.Save(Dialog.Path & ".pext", TextEditor1.Text) 'Saving file.
+  TextEditor1.ShowModified = False 'Returned to the text editor to remove the red lines.
+  Local = Dialog.Path 'Adding a new variable location to Local.
+  FMain.Title = Local & " - PEXT Integrated Development Env." 'Defining the title with the location of the argument.
+    pic_status.Visible = True
+    pic_status.Picture = Picture["light.png"]
+    lbl_saved.Text = "Saved"
+  Catch
+  Message.Info(Error.Text)
+  'Error message if occurred.
+    Else
+    File.Save(Local, TextEditor1.Text) 'Saving file if there is a location in the "Local" variable.
+    TextEditor1.ShowModified = False 'Returned to the text editor to remove the red lines.
+    FMain.Title = Local & " - PEXT Integrated Development Env." 'Defining the title with the location of the argument.
+    pic_status.Visible = True
+    pic_status.Picture = Picture["light.png"]
+    lbl_saved.Text = "Saved"
+  Endif
+End
+Public Sub OpenF_Click()
+  Dialog.Filter = ["*.pext", "Pear Extension"]
+  If Dialog.OpenFile() Then Return 'Open new file.
+  TextEditor1.Text = File.Load(Dialog.Path) 'Reading the argument file and writing it in the editor.
+  Local = Dialog.Path 'Adding a new variable location to Local.
+  FMain.Title = Local & " - PEXT Integrated Development Env." 'Defining the title with the location of the argument.
+  Catch
+    Message.Error(Error.Text)  'Error message if occurred.
+End
+Public Sub TextEditor1_Change()
+  Dim cl As Integer = TextEditor1.Line + 1
+  Dim cc As Integer = TextEditor1.Column + 1
+  TextEditor1.ShowModified = True 'Showing red line if text is edited.
+  If Local == "" Then 'Checking if the file location exists.
+     Else
+     FMain.Title = "*" & Local & " - PEXT Integrated Development Env." 'Returning symbol * in the title if the file is edited.
+     pic_status.Visible = True
+     lbl_saved.Visible = True
+     lbl_saved.Text = "Unsaved!!"
+     pic_status.Picture = Picture["warn.png"]
+  Endif
+   pic_status.Visible = True
+   lbl_saved.Visible = True
+   lbl_saved.Text = "Unsaved!!"
+   pic_status.Picture = Picture["warn.png"]
+   column_text.Text = "Col " & cc
+   line_text.Text = "Ln " & cl
+   char_text.Text = "Ch" & cc
+End
+Public Sub FontF_Click()
+  If Dialog.SelectFont() Then Return 'Selecting font.
+  TextEditor1.Font = Dialog.Font 'Returning source to the editor.
+  Catch
+  Message.Info(Error.Text) 'Error message if occurred.
+End
+Public Sub Form_KeyPress()
+  If Key.F11 == Key.Code Then
+    If FMain.FullScreen == True Then 'Getting full screen.
+      FMain.FullScreen = False
+      Else
+      FMain.FullScreen = True
+    Endif
+  Endif
+  If Key.Esc == Key.Code Then
+    FMain.FullScreen = False
+  Endif
+  'Just Test
+  If Key.Code == Key.F1 Then
+    Message(Local)
+  Endif
+End
+Public Sub COPYF_Click()
+  If TextEditor1.SelectedText == Null Then 
+  TextEditor1.Copy 'Copying full text.
+    Else
+  Clipboard.Copy(TextEditor1.SelectedText) 'Copying selected text.
+  Endif
+End
+Public Sub EscapeF_Click()
+    TextEditor1.Text = String.FromHTML(TextEditor1.Text) 'Removing characters.
+End
+Public Sub DiacriticsF_Click()
+    TextEditor1.Text = String.RemoveDiacritics(TextEditor1.Text) 'Removing Diacritics.
+End
+Public Sub SaveNF_Click()
+  Dialog.Filter = ["*.pext", "Pear Extension"]
+  If Dialog.SaveFile() Then Return 'Saving as a new file.
+  File.Save(Dialog.Path & ".pext", TextEditor1.Text) 'Saving file.
+  TextEditor1.ShowModified = False 'Returned to the text editor to remove the red lines.
+  FMain.Title = Local & " - PEXT Integrated Development Env." 'Defining the title with the location of the argument.
+  pic_status.Visible = True
+  pic_status.Picture = Picture["light.png"]
+  lbl_saved.Text = "Saved"
+    pic_status.Visible = True
+    pic_status.Picture = Picture["light.png"]
+    lbl_saved.Text = "Saved"
+  Catch
+  Message.Info(Error.Text) 'Error message if occurred.
+End
+Public Sub NewWindowsf_Click()
+Dim New_Window As New FMain 'Open new windows.
+  New_Window.Show()
+End
+Public Sub NewF_Click()
+  If Local == "" Then 'Creating new file.
+    Else
+  If TextEditor1.Text == File.Load(Local) Then
+    Else
+  If Message.Question(("Do you want to save the file ?"), ("Yes"), ("No")) = 1 Then 'Asks if you want to save the file written in the editor.
+  File.Save(Dialog.Path, TextEditor1.Text)
+  CreFile() 'Call function CreFile()
+  Else
+  CreFile() 
+  Endif
+  Endif
+  CreFile() 
+  Endif
+End
+Sub CreFile() 'Creating new file.
+TextEditor1.Clear 'Clear editor.
+Local = "" 'Return the clean "Local" variable.
+FMain.Title = "New File - PEXT Integrated Development Env." 'Defining the title as new file.
+End
+Public Sub Form_Close()
+  If Local == "" Then
+    If TextEditor1.Text == "" Then 'Asking if you want to save the file before closing the program.
+      Else
+      If Message.Question(("Do you want to save the file ?"), ("Yes"), ("No")) = 1 Then
+        If Dialog.SaveFile() Then Return
+  File.Save(Dialog.Path, TextEditor1.Text)
+  TextEditor1.ShowModified = False
+  Local = Dialog.Path
+  FMain.Title = Dialog.Path & " - PEXT Integrated Development Env."
+  Catch
+  Message.Info(Error.Text)
+      Endif
+      Endif
+    Else
+  If TextEditor1.Text == File.Load(Local) Then
+    Else
+  If Message.Question(("Do you want to save the file ?"), ("Yes"), ("No")) = 1 Then
+  File.Save(Dialog.Path, TextEditor1.Text)
+  Else
+  Endif
+  Endif
+  Endif
+End
+Public Sub AllcapitalizesF_Click()
+    TextEditor1.Text = String.UCase(TextEditor1.Text) 'Defining All Capital in editor.
+  End
+
+Public Sub ALLminusculef_Click()
+    TextEditor1.Text = String.LCase(TextEditor1.Text) 'Defining All minuscule in editor.
+End
+Public Sub Quitf_Click()
+    FMain.Close 'Quit program.
+End
+Public Sub ShowPreviewF_Click()
+  If ShowPreviewF.Checked == True Then 'Show ShowPreview in editor.
+    TextEditor1.ShowPreview = False
+    ShowPreviewF.Checked = False
+    Else
+     TextEditor1.ShowPreview = True
+     ShowPreviewF.Checked = True
+  Endif
+End
+Public Sub MODEF2_Click()
+  TextEditor1.Highlight = "Diff"
+  MODEF1.Checked = False
+  MODEF2.Checked = True
+End
+Public Sub chooser_Activate()
+   TextEditor1.Text = File.Load(chooser.Value)
+   Local = chooser.Value
+   FMain.Title = Local & " - PEXT Integrated Development Env."
+   Catch
+    Message.Error(Error.Text) 
+End
+Public Sub p_hide_Click()
+  Chooser.Hide
+  TextEditor1.X = 0
+  TextEditor1.W = Me.W - 20
+  TextEditor1.H = Me.H - 69 - 21 + 30
+  blue_bar.Y = Me.H - 44
+  chooser.H = Me.H - 25 - 21
+  blue_bar.w = Me.W - 20
+End
+Public Sub p_show_Click()
+  chooser.Show
+  TextEditor1.W = Me.W - 301
+  TextEditor1.H = Me.H - 69 - 21 + 30
+  blue_bar.Y = Me.H - 44
+  chooser.H = Me.H - 25 - 21
+  blue_bar.w = Me.W - 20
+  TextEditor1.X = 280
+End
+Public Sub ABOUT_Click()
+  FAbout.Show
+End
+Public Sub CHANGELOG_Click()
+  FChangelog.Show
+End
+
+Public Sub DONATE_Click()
+'to do
+End
+Public Sub MODEF1_Click()
+  Dim hFont As Font = Font["Monospace, 10"]
+  MODEF1.Checked = True
+  MODEF2.Checked = False
+  TextEditor1.Highlight = "sh"
+  TextEditor1.Styles[Highlight.Background].Color = Color.RGB(32, 32, 32, 0) 'background
+  TextEditor1.Styles[Highlight.Normal].Color = Color.RGB(255, 255, 255) 'normal colo
+  TextEditor1.Styles[Highlight.Keyword].Color = Color.RGB(125, 56, 181) 'if then else color
+  TextEditor1.Styles[Highlight.Constant].Color = Color.RGB(288, 162, 191) 'if else color
+  TextEditor1.Styles[Highlight.DataType].Color = Color.RGB(88, 162, 191)
+  TextEditor1.Styles[Highlight.Operator].Color = Color.RGB(200, 200, 200)
+  TextEditor1.Styles[Highlight.Symbol].Color = Color.RGB(255, 255, 255)
+  TextEditor1.Styles[Highlight.Label].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Number].Color = Color.RGB(218, 237, 209)
+  TextEditor1.Styles[Highlight.String].Color = Color.RGB(195, 137, 113)
+  TextEditor1.Styles[Highlight.Comment].Color = Color.RGB(23, 96, 23, 0)
+  TextEditor1.Styles[Highlight.Help].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Preprocessor].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Breakpoint].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.CurrentLine].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Selection].Color = Color.RGB(200, 200, 200)
+  TextEditor1.Styles[Highlight.Highlight].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Error].Color = Color.RGB(255, 0, 0)
+  TextEditor1.Styles[Highlight.Alternate].Color = Color.RGB(255, 255, 255)
+  TextEditor1.Font = hFont
+  TextEditor1.CloseBraces = True
+  TextEditor1.CloseStrings = True
+End
+
+Public Sub FSCREEN_Click()
+If FMain.FullScreen = True Then
+  FMain.FullScreen = False
+Else
+  FMain.FullScreen = True
+Endif
+End

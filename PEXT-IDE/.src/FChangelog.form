@@ -1,0 +1,32 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,65,39)
+  { IconView1 IconView
+    MoveScaled(17,-1,49,40)
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(2,6,11,11)
+    Picture = Picture["pear-ide-v2.png"]
+    Mode = PictureBox.Contain
+  }
+  { Label1 Label
+    MoveScaled(2,18,11,4)
+    Font = Font["Bold,+1"]
+    Text = ("PEXT")
+    Alignment = Align.Center
+  }
+  { Label2 Label
+    MoveScaled(0,34,15,5)
+    Font = Font["-3"]
+    Text = ("Integrated Development\nEnvironment")
+  }
+  { Button1 Button
+    MoveScaled(50,34,14,3)
+    Text = ("Exit")
+  }
+  { TextArea1 TextArea
+    MoveScaled(17,1,47,30)
+    Text = ("Version prerelease(22.10. 2020)\n • First release\n\n23.10 (23. 10. 2020):\n • Added a working toolbar\n • Added different Syntax HightLight [BUG]\n • Bug fixes\n • Added prompt on exit [BUG]\n • Layout slightly modified\n\n21.1 BETA1 (2. 01. 2021)\n • [FIXED]Responsive window\n • [FIXED]syntax highlighting \n • [NEW]dark mode as default\n • [NEW]left panel shows files\n • [FIXED]better file chooser\n • [FIXED]better file save method\n • [NEW]added Clone from GutHub\n • [NEW]pre-loader\n • [NEW]welcome screen\n • better performance\n • huge design and elements update\n • [fixed] toolbar icons were black, on dark background\n • [FIXED] you had to manually add .pext at the end of the file\n • [FIXED] could not get rid of the left panel(added a dedicated buttn to hide the panel\n • [NEW] full screen support\n • more bugs to fix later\n\n21.1 BETA2 (2.01. 2021)\n • [FIXED] Typo in Welcome Screen\n • [FIXED] Better loading times\n • [NEW] More consistent toolbar\n • [NEW] Changelog form\n • [NEW] About form\n • [FIXED] Changelog redesigned\n\n21.1 BETA3 (14. 01. 2021)\n • [FIXED] Show Preview bugged\n • [FIXED] Useless items in toolbar\n • [FIXED] Full screen function did not work\n • [FIXED] Auto adds .pext extension on save :> finally\n • [ADDED] saved/unsaved warning on the bottom blue thing\n • [FIXED] removed useless UI elements\n • [ADDED] more bugs to fix later\n\n#TODO: donate window\n#TODO: turn 2 buttons into one checkbox for ALT+P\n#TODO: add license text to the begg. of each class\n#TODO: recent files support\n#TODO: add GitHub version control\n#TODO: release")
+  }
+}

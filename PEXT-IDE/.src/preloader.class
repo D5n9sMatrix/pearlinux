@@ -1,0 +1,12 @@
+' Gambas class file
+
+Public Sub Form_Open()
+  Me.Center
+  tmr.Start
+  tmr.Delay = 2000
+End
+Public Sub tmr_Timer()
+  tmr.Trigger
+  Me.Close
+  FWelcome.Show
+End

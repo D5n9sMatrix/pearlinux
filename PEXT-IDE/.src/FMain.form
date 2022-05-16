@@ -1,0 +1,192 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,160,95)
+  Text = ("Untitled  -  Pear Integrated Development Env.")
+  Icon = Picture["pear-ide-v2.png"]
+  { Menu Menu
+    Text = ("File")
+    { SaveF Menu
+      Text = ("Save")
+      Shortcut = "Ctrl+S"
+    }
+    { SaveNF Menu
+      Text = ("Save as new file")
+      Shortcut = "Ctrl+Shift+S"
+    }
+    { OpenF Menu
+      Text = ("Open")
+      Shortcut = "Ctrl+O"
+    }
+    { NewF Menu
+      Text = ("New")
+      Shortcut = "Ctrl+N"
+    }
+    { Quitf Menu
+      Text = ("Quit")
+      Shortcut = "Ctrl+Q"
+    }
+  }
+  { EDIT Menu
+    Text = ("Edit")
+    { FontF Menu
+      Text = ("Font")
+    }
+    { TextF Menu
+      Text = ("Text")
+      { COPYF Menu
+        Text = ("Copy")
+      }
+      { EscapeF Menu
+        Text = ("Escape Remove")
+      }
+      { DiacriticsF Menu
+        Text = ("Diacritics Remove")
+      }
+    }
+  }
+  { ViewF Menu
+    Text = ("View")
+    { ShowPreviewF Menu
+      Text = ("Show Preview")
+      Checked = True
+    }
+  }
+  { EDITOR Menu
+    Text = ("Editor")
+    { MODEF Menu
+      Text = ("Mode")
+      { MODEF1 Menu
+        Text = ("Default (PEXT)")
+      }
+      { MODEF2 Menu
+        Text = ("Text")
+      }
+    }
+  }
+  { DEBUG Menu
+    Text = ("Debug")
+    { UWU Menu
+      Text = ("uwu")
+      Shortcut = "Alt+U"
+    }
+  }
+  { WINDOW Menu
+    Text = ("Window")
+    { NewWindowsf Menu
+      Text = ("New Window")
+      Shortcut = "Ctrl+Shift+N"
+    }
+    { FSCREEN Menu
+      Text = ("Fullscreen")
+      Shortcut = "F11"
+    }
+    { p_hide Menu
+      Text = ("Hide Panel")
+      Shortcut = "Alt+P"
+    }
+    { p_show Menu
+      Text = ("Show Panel")
+    }
+  }
+  { HELP Menu
+    Text = ("Help")
+    { ABOUT Menu
+      Text = ("About")
+    }
+    { CHANGELOG Menu
+      Text = ("Changelog")
+    }
+    { DONATE Menu
+      Text = ("Donate")
+    }
+  }
+  { chooser FileChooser
+    MoveScaled(-1,0,41,92)
+    ShowDetailed = True
+    ShowBookmark = False
+    ShowFile = False
+    ShowButton = True
+    ShowToolbar = False
+  }
+  { TextEditor1 TextEditor
+    MoveScaled(40,0,120,88)
+    Foreground = Color.Background
+    ShowPreview = True
+    TabIndent = True
+    ShowPosition = True
+    ShowLimit = True
+    ShowCurrent = True
+    ShowLineNumber = True
+    ShowModified = True
+    ShowBraces = True
+    ShowSpaces = True
+    ShowIndent = True
+  }
+  { blue_bar Panel
+    MoveScaled(0,88,161,3)
+    Background = &H378BE0&
+    Arrangement = Arrange.Horizontal
+    { Spring1 Spring
+      MoveScaled(5,-1,4,4)
+    }
+    { pic_ready PictureBox
+      MoveScaled(11,0,3,3)
+      Picture = Picture["run.png"]
+      Mode = PictureBox.Contain
+    }
+    { lbl_status Label
+      MoveScaled(16,0,16,3)
+      Foreground = Color.ButtonBackground
+      Text = ("Ready")
+    }
+    { Spring4 Spring
+      MoveScaled(35,-1,4,4)
+    }
+    { line_text Label
+      MoveScaled(49,-1,11,4)
+      Foreground = &HFFFFFF&
+      Text = ("Ln")
+    }
+    { Spring3 Spring
+      MoveScaled(68,0,4,4)
+    }
+    { column_text Label
+      MoveScaled(79,-1,8,4)
+      Foreground = &HFFFFFF&
+      Text = ("Col")
+    }
+    { Spring6 Spring
+      MoveScaled(90,0,4,4)
+    }
+    { char_text Label
+      MoveScaled(103,-1,8,4)
+      Foreground = &HFFFFFF&
+      Text = ("Ch")
+    }
+    { Spring2 Spring
+      MoveScaled(111,0,4,4)
+    }
+    { pic_status PictureBox
+      MoveScaled(120,0,3,3)
+      Visible = False
+      Picture = Picture["warn.png"]
+      Mode = PictureBox.Contain
+    }
+    { lbl_saved Label
+      MoveScaled(124,1,8,2)
+      Visible = False
+      Foreground = &HFFFFFF&
+      Text = ("Unsaved!")
+    }
+    { Spring7 Spring
+      MoveScaled(148,-1,4,4)
+    }
+    { Spring5 Spring
+      MoveScaled(168,-1,4,4)
+    }
+    { Separator1 Separator
+      MoveScaled(178,0,1,4)
+    }
+  }
+}
