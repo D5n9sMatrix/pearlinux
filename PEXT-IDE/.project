@@ -2,7 +2,7 @@
 Title=PEXT Integrated Development Env.
 Startup=preloader
 Icon=pear-ide-v2.png
-Version=21.1.3
+Version=21.1.4
 Component=gb.image
 Component=gb.gui.qt
 Component=gb.form

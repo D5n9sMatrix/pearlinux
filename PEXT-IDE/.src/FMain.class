@@ -216,6 +216,7 @@ End
 Public Sub NewF_Click()
 
   Dim FileName As String
+
   If Local == "" Then 'Creating new file.
     Print Dialog.Path &/ FileName
   Else
