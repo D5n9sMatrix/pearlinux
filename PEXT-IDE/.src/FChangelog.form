@@ -7,14 +7,14 @@
   }
   { PictureBox1 PictureBox
     MoveScaled(2,6,11,11)
-    Picture = Picture["pear-ide-v2.png"]
+    Picture = Picture.Load("pear-ide-v2.png")
     Mode = PictureBox.Contain
   }
   { Label1 Label
     MoveScaled(2,18,11,4)
     Font = Font["Bold,+1"]
-    Text = ("PEXT")
     Alignment = Align.Center
+    Text = ("PEXT")
   }
   { Label2 Label
     MoveScaled(0,34,15,5)
