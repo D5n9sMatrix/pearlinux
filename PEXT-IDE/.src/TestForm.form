@@ -126,14 +126,6 @@
     ShowSpaces = True
     ShowIndent = True
   }
-  { chooser FileChooser
-    MoveScaled(0,0,41,77)
-    ShowDetailed = True
-    ShowBookmark = False
-    ShowFile = False
-    ShowButton = True
-    ShowToolbar = False
-  }
   { blue_bar Panel
     MoveScaled(0,73,161,3)
     Background = &H378BE0&
@@ -143,7 +135,7 @@
     }
     { pic_ready PictureBox
       MoveScaled(12,0,3,3)
-      Picture = Picture["run.png"]
+      Picture = Picture.Load("run.png")
       Mode = PictureBox.Contain
     }
     { Label1 Label
@@ -181,7 +173,7 @@
     { pic_status PictureBox
       MoveScaled(127,0,3,3)
       Visible = False
-      Picture = Picture["warn.png"]
+      Picture = Picture.Load("warn.png")
       Mode = PictureBox.Contain
     }
     { lbl_saved Label
@@ -199,5 +191,8 @@
     { Separator1 Separator
       MoveScaled(178,0,1,4)
     }
+  }
+  { DirChooser1 DirChooser
+    MoveScaled(0,1,28,71)
   }
 }
